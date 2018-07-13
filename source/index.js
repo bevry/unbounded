@@ -2,16 +2,22 @@
 
 const bind = Function.prototype.bind
 
+function define (bounded, unbounded) {
+	if (bounded.unbounded !== unbounded) {
+		Object.defineProperty(bounded, 'unbounded', {
+			value: unbounded.unbounded || unbounded,
+			enumerable: false,
+			configurable: false,
+			writable: false
+		})
+	}
+	return bounded
+}
+
 function binder (...args) {
-	const unbounded = this.unbounded || this
-	const result = bind.apply(this, args)
-	Object.defineProperty(result, 'unbounded', {
-		value: unbounded,
-		enumerable: false,
-		configurable: false,
-		writable: false
-	})
-	return result
+	const bounded = bind.apply(this, args)
+	define(bounded, this)
+	return bounded
 }
 
 function patch () {
@@ -19,6 +25,7 @@ function patch () {
 		/* eslint no-extend-native:0 */
 		Function.prototype.bind = binder
 	}
+	return module.exports
 }
 
-module.exports = { bind, binder, patch }
+module.exports = { bind, binder, patch, define }
