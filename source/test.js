@@ -2,32 +2,32 @@
 
 const unbounded = require('./')
 const { equal } = require('assert-helpers')
-const joe = require('joe')
+const kava = require('kava')
 
 const context = {
 	hello: 'world'
 }
 
-joe.suite('unbounded', function (suite, test) {
-	test('binder works', function () {
-		function a () {
+kava.suite('unbounded', function(suite, test) {
+	test('binder works', function() {
+		function a() {
 			return this.hello
 		}
 		const b = unbounded.binder.call(a, context)
 		equal(b(), context.hello, 'context was correct')
 		equal(b.unbounded, a, 'unbounded was correct')
 	})
-	test('patch works', function () {
+	test('patch works', function() {
 		unbounded.patch()
-		function a () {
+		function a() {
 			return this.hello
 		}
 		const b = a.bind(context)
 		equal(b(), context.hello, 'context was correct')
 		equal(b.unbounded, a, 'unbounded was correct')
 	})
-	test('nested binds work', function () {
-		function a () {
+	test('nested binds work', function() {
+		function a() {
 			return this.hello
 		}
 		const b = a.bind(context).bind({})

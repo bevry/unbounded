@@ -2,7 +2,7 @@
 
 const bind = Function.prototype.bind
 
-function define (bounded, unbounded) {
+function define(bounded, unbounded) {
 	if (bounded.unbounded !== unbounded) {
 		Object.defineProperty(bounded, 'unbounded', {
 			value: unbounded.unbounded || unbounded,
@@ -14,13 +14,13 @@ function define (bounded, unbounded) {
 	return bounded
 }
 
-function binder (...args) {
+function binder(...args) {
 	const bounded = bind.apply(this, args)
 	define(bounded, this)
 	return bounded
 }
 
-function patch () {
+function patch() {
 	if (Function.prototype.bind !== binder) {
 		/* eslint no-extend-native:0 */
 		Function.prototype.bind = binder
