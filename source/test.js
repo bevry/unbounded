@@ -5,11 +5,11 @@ const { equal } = require('assert-helpers')
 const kava = require('kava')
 
 const context = {
-	hello: 'world'
+	hello: 'world',
 }
 
-kava.suite('unbounded', function(suite, test) {
-	test('binder works', function() {
+kava.suite('unbounded', function (suite, test) {
+	test('binder works', function () {
 		function a() {
 			return this.hello
 		}
@@ -17,7 +17,7 @@ kava.suite('unbounded', function(suite, test) {
 		equal(b(), context.hello, 'context was correct')
 		equal(b.unbounded, a, 'unbounded was correct')
 	})
-	test('patch works', function() {
+	test('patch works', function () {
 		unbounded.patch()
 		function a() {
 			return this.hello
@@ -26,7 +26,7 @@ kava.suite('unbounded', function(suite, test) {
 		equal(b(), context.hello, 'context was correct')
 		equal(b.unbounded, a, 'unbounded was correct')
 	})
-	test('nested binds work', function() {
+	test('nested binds work', function () {
 		function a() {
 			return this.hello
 		}

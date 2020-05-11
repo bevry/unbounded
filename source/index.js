@@ -8,7 +8,7 @@ function define(bounded, unbounded) {
 			value: unbounded.unbounded || unbounded,
 			enumerable: false,
 			configurable: false,
-			writable: false
+			writable: false,
 		})
 	}
 	return bounded
