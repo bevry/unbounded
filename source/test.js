@@ -1,6 +1,6 @@
 'use strict'
 
-const unbounded = require('./')
+const unbounded = require('./index.js')
 const { equal } = require('assert-helpers')
 const kava = require('kava')
 
