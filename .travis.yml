@@ -9,20 +9,20 @@ node_js:
 matrix:
   fast_finish: true
   allow_failures: []
-cache: yarn
+cache: npm
 install:
   - >-
     eval "$(curl -fsSL
-    https://raw.githubusercontent.com/bevry/awesome-travis/9fa2fa025c77b463d03154f39922af95cadc9c67/scripts/node-install.bash)"
+    https://raw.githubusercontent.com/bevry/awesome-travis/master/scripts/node-install.bash)"
 before_script:
   - >-
     eval "$(curl -fsSL
-    https://raw.githubusercontent.com/bevry/awesome-travis/9fa2fa025c77b463d03154f39922af95cadc9c67/scripts/node-verify.bash)"
+    https://raw.githubusercontent.com/bevry/awesome-travis/master/scripts/node-verify.bash)"
 after_success:
   - >-
     eval "$(curl -fsSL
-    https://raw.githubusercontent.com/bevry/awesome-travis/9fa2fa025c77b463d03154f39922af95cadc9c67/scripts/node-publish.bash)"
+    https://raw.githubusercontent.com/bevry/awesome-travis/master/scripts/node-publish.bash)"
 notifications:
   email:
     recipients: >-
-      GfIjJcACfyoURtAqwBfyjI3bVm+tKonU2UP5bkSiZI7W0y9h+MdayVvqjE/nAh5R8oAqtB7zhafzuwOjl/jMrbMCc0jy98Qeg0AiNjvsLDyQ3T3gHHhG06fYKTsI7/6YjAn+qD+R0DlYdZPkuW882abHsbVDfnmSzp6504qOdSQUXW2UoMKZmIyVyUt1jd6OjksNQn+BgAIJxesTmom1iLHUIkyAoZyznOahKry4BLIyApiPjihdxyvwGG6QpeFt2wrB6fhJc40phH5t7cDQSIVHWxBhwKpYxsQ7cXaos9WUxjndVJFPlk/nCuSh3b/9lnMWNLSe7KpDB9W5LRwxLX3kpJKHPL5OvFLI/ikaMmNtK62bgFbjCuro/Afn3FFgaTgKLSopaCVH1uR9HU2QzzJ71K1+3ciQ2rO8m0Ug6TudI8j+bbkuDOoL9Eh7xw4TlR3rShNAex/yNniR+Th3UvZx59pOBkTYuoFTqQZ3thkXGsT3A1YwIRpvPnhuGb0pFsjRDSzcNgc6xIkA6+2PvjyX5K9sr/IgcyfMpa8O5OClme72DzKC5qLTzAVyg7b24ixDqjERq32wVrKxAE/mPBWheA3v+l3uOSUIMMj9TuNrinvyCkLB3x0U42LeOv/iA8dLsWC/nMYn3AAd95XSxU7Muy4mhmI6MXkvGys/usA=
+      KIHTJAE+IoGDo1ZLGrRZfL7wf8IQZAkOJhP32bEk20lXnMj3LDRKigvRDtlk9fHDDsMQhwluNXDhWudJ2/jPsmSLE0DYGkUR6qVFx55i/7Y2pfTatTzei7Obv4OAGZkrjluwnLACmsw7p4kVGmao6Fl0jrMlkcNieRIvo3zzdRSEw238kJb8nnaoxg4uh6EXYkuG6Ndl+qsJb8TUKV0Enxm19Zy5bzwaZoYKyPU/ke/7irKr+Ox1223NLUp9lu88wGr5fqiL3FNBlNhMcPqJQjFDpQIW6fsShwh68G3HuFYBrR0ES6B4b+qsk6ESzCzVmttj6zEwNBqhwX/2plSYIYs9K9ZXsV/vbKuwqkBOm7T9zkN5aH6Iu+2NZsJnGN5LpvlkZqqfpUIdPNMa10cpTo/hI1V3jG0zShTjshw6Te11tkDrJDfUP+hHitGBnPo4K7N793iXR8QHNOmz3RVdWYiPimQqsbzMEAfYjTKPjHhllVjn5qqTUs9TFWOOXamXQ65IRCURzd6mU6SgHKXsFPWNAkduuCPy0rauxY/ciX4JignnuNgIihIkfQB9iTG+xhNkeE4ez79OJEu1AKziNHqK1AeV1l3LlYIs/CjD928RyZxJNdMTVlHr1FfBJkIgjA/NefmS+6CYYoJGj8P06T1nevTRUxMfYy4RHefo8oU=
