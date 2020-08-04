@@ -1,6 +1,6 @@
 {
   "name": "unbounded",
-  "version": "3.9.0",
+  "version": "3.10.0",
   "description": "Function.prototype.bind replacement that provides an `unbounded` hidden property on the returned bounded function, that contains the original unbounded function",
   "homepage": "https://github.com/bevry/unbounded",
   "license": "MIT",
@@ -101,19 +101,19 @@
   "browser": "edition-browsers/index.js",
   "devDependencies": {
     "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.10.5",
-    "@babel/plugin-proposal-object-rest-spread": "^7.10.4",
-    "@babel/preset-env": "^7.10.4",
-    "@bevry/update-contributors": "^1.13.0",
-    "assert-helpers": "^6.18.0",
-    "eslint": "^7.5.0",
-    "eslint-config-bevry": "^3.17.0",
+    "@babel/core": "^7.11.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@bevry/update-contributors": "^1.14.0",
+    "assert-helpers": "^6.19.0",
+    "eslint": "^7.6.0",
+    "eslint-config-bevry": "^3.18.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "kava": "^5.9.0",
+    "kava": "^5.10.0",
     "prettier": "^2.0.5",
-    "projectz": "^2.12.0",
-    "valid-directory": "^2.6.0"
+    "projectz": "^2.13.0",
+    "valid-directory": "^2.7.0"
   },
   "scripts": {
     "our:clean": "rm -Rf ./docs ./edition* ./es2015 ./es5 ./out ./.next",
