@@ -1,6 +1,6 @@
 {
   "name": "unbounded",
-  "version": "3.13.0",
+  "version": "3.14.0",
   "description": "Function.prototype.bind replacement that provides an `unbounded` hidden property on the returned bounded function, that contains the original unbounded function",
   "homepage": "https://github.com/bevry/unbounded",
   "license": "MIT",
@@ -16,7 +16,7 @@
   ],
   "badges": {
     "list": [
-      "travisci",
+      "githubworkflow",
       "npmversion",
       "npmdownloads",
       "daviddm",
@@ -33,6 +33,7 @@
       "wishlist"
     ],
     "config": {
+      "githubWorkflow": "bevry",
       "githubSponsorsUsername": "balupton",
       "buymeacoffeeUsername": "balupton",
       "cryptoURL": "https://bevry.me/crypto",
@@ -42,7 +43,6 @@
       "patreonUsername": "bevry",
       "paypalURL": "https://bevry.me/paypal",
       "wishlistURL": "https://bevry.me/wishlist",
-      "travisTLD": "com",
       "githubUsername": "bevry",
       "githubRepository": "unbounded",
       "githubSlug": "bevry/unbounded",
@@ -69,7 +69,7 @@
   },
   "editions": [
     {
-      "description": "ESNext source code for Node.js 10 || 12 || 14 || 15 with Require for modules",
+      "description": "ESNext source code for Node.js 10 || 12 || 14 with Require for modules",
       "directory": "source",
       "entry": "index.js",
       "tags": [
@@ -79,7 +79,7 @@
         "require"
       ],
       "engines": {
-        "node": "10 || 12 || 14 || 15",
+        "node": "10 || 12 || 14",
         "browsers": false
       }
     },
@@ -102,20 +102,20 @@
   "main": "source/index.js",
   "browser": "edition-browsers/index.js",
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
-    "@babel/preset-env": "^7.12.1",
-    "@bevry/update-contributors": "^1.17.0",
-    "assert-helpers": "^8.1.0",
-    "eslint": "^7.12.1",
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.14.8",
+    "@babel/plugin-proposal-object-rest-spread": "^7.14.7",
+    "@babel/preset-env": "^7.14.8",
+    "@bevry/update-contributors": "^1.18.0",
+    "assert-helpers": "^8.2.0",
+    "eslint": "^7.31.0",
     "eslint-config-bevry": "^3.23.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "kava": "^5.13.0",
-    "prettier": "^2.1.2",
-    "projectz": "^2.17.0",
-    "valid-directory": "^3.4.0"
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "kava": "^5.14.0",
+    "prettier": "^2.3.2",
+    "projectz": "^2.18.0",
+    "valid-directory": "^3.7.0"
   },
   "scripts": {
     "our:clean": "rm -Rf ./docs ./edition* ./es2015 ./es5 ./out ./.next",
@@ -129,7 +129,7 @@
     "our:release:check-changelog": "cat ./HISTORY.md | grep v$npm_package_version || (echo add a changelog entry for v$npm_package_version && exit -1)",
     "our:release:check-dirty": "git diff --exit-code",
     "our:release:prepare": "npm run our:clean && npm run our:compile && npm run our:test && npm run our:meta",
-    "our:release:push": "git push origin master && git push origin --tags",
+    "our:release:push": "git push origin && git push origin --tags",
     "our:release:tag": "export MESSAGE=$(cat ./HISTORY.md | sed -n \"/## v$npm_package_version/,/##/p\" | sed 's/## //' | awk 'NR>1{print buf}{buf = $0}') && test \"$MESSAGE\" || (echo 'proper changelog entry not found' && exit -1) && git tag v$npm_package_version -am \"$MESSAGE\"",
     "our:setup": "npm run our:setup:install",
     "our:setup:install": "npm install",
