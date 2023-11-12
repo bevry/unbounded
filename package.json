@@ -1,6 +1,6 @@
 {
   "name": "unbounded",
-  "version": "3.16.0",
+  "version": "4.0.0",
   "description": "Function.prototype.bind replacement that provides an `unbounded` hidden property on the returned bounded function, that contains the original unbounded function",
   "homepage": "https://github.com/bevry/unbounded",
   "license": "Artistic-2.0",
@@ -65,11 +65,11 @@
     "url": "https://github.com/bevry/unbounded.git"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=8"
   },
   "editions": [
     {
-      "description": "ESNext source code for Node.js 10 || 12 || 14 || 16 || 18 || 20 || 21 with Require for modules",
+      "description": "ESNext source code for Node.js 8 || 10 || 12 || 14 || 16 || 18 || 20 || 21 with Require for modules",
       "directory": "source",
       "entry": "index.js",
       "tags": [
@@ -79,7 +79,7 @@
         "require"
       ],
       "engines": {
-        "node": "10 || 12 || 14 || 16 || 18 || 20 || 21",
+        "node": "8 || 10 || 12 || 14 || 16 || 18 || 20 || 21",
         "browsers": false
       }
     },
@@ -103,19 +103,19 @@
   "browser": "edition-browsers/index.js",
   "devDependencies": {
     "@babel/cli": "^7.23.0",
-    "@babel/core": "^7.23.2",
+    "@babel/core": "^7.23.3",
     "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
-    "@babel/preset-env": "^7.23.2",
-    "@bevry/update-contributors": "^1.22.0",
-    "assert-helpers": "^8.4.0",
-    "eslint": "^8.52.0",
-    "eslint-config-bevry": "^3.28.0",
+    "@babel/preset-env": "^7.23.3",
+    "@bevry/update-contributors": "^1.23.0",
+    "assert-helpers": "^10.0.0",
+    "eslint": "^8.53.0",
+    "eslint-config-bevry": "^3.29.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
-    "kava": "^5.17.0",
+    "kava": "3.2.0",
     "prettier": "^3.0.3",
     "projectz": "^2.23.0",
-    "valid-directory": "^4.0.0"
+    "valid-directory": "^4.1.0"
   },
   "scripts": {
     "our:clean": "rm -Rf ./docs ./edition* ./es2015 ./es5 ./out ./.next",
