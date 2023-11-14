@@ -79,7 +79,7 @@ equal(b.unbounded, a, 'unbounded was correct')
 
 ``` html
 <script type="module">
-    import * as pkg from '//dev.jspm.io/unbounded@5.1.0'
+    import * as pkg from '//dev.jspm.io/unbounded@5.2.0'
 </script>
 ```
 
