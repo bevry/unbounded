@@ -80,7 +80,7 @@ equal(b.unbounded, a, 'unbounded was correct')
 
 ``` html
 <script type="module">
-    import * as pkg from '//dev.jspm.io/unbounded@5.3.0'
+    import * as pkg from '//dev.jspm.io/unbounded@5.4.0'
 </script>
 ```
 
