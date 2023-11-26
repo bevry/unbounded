@@ -35,34 +35,48 @@ Function.prototype.bind replacement that provides an `unbounded` hidden property
 
 ## Usage
 
+[Complete API Documentation.](http://master.unbounded.bevry.surge.sh/docs/)
+
 This package functions like [`Function.prototype.bind`](https://devdocs.io/javascript/global_objects/function/bind), however it exposes a hidden `unbounded` property on the returned bounded function that contains the original unbounded function.
 
-This is very useful as it means you can do `(fn.unbounded || fn).length` to always get the correct amount of arguments, or `(fn.unbounded || fn).toString()` to always get the source code of any function instead of getting `function () { [native code] }` for bounded functions.
+This is very useful as it means you can do:
 
-You can use unbounded via `require('unbounded').binder` like so:
+-   `(fn.unbounded || fn).length` to always get the correct amount of arguments
+-   `(fn.unbounded || fn).toString()` to always get the source code of any function instead of getting `function () { [native code] }` for bounded functions
+-   `fn.bind(firstContext).unbounded.bind(secondContext)` to have `fn` actually bind to the second context, as `fn.bind(firstContext).bind(secondContext)` only binds to the first context
+
+To have all bounded functions have the `unbounded` property, use `patch`:
 
 ```javascript
-const { binder } = require('unbounded')
+import { patch } from 'unbounded'
+patch()
+
 const context = { hello: 'world' }
-function a() {
+function myFunction() {
     return this.hello
 }
-const b = binder.call(a, context)
-equal(b(), context.hello, 'context was correct')
-equal(b.unbounded, a, 'unbounded was correct')
+
+import { equal } from 'assert'
+const boundedFunction = myFunction.bind(context)
+equal(boundedFunction(), context.hello, 'context was correct')
+equal(boundedFunction.unbounded, myFunction, 'unbounded was correct')
 ```
 
-Or you can patch `Function.prototype.bind` directly:
+To have only specific functions have the `unbounded` property, use `binder`:
 
 ```javascript
-require('unbounded').patch()
+import { equal } from 'assert'
+import { binder } from 'unbounded'
+
 const context = { hello: 'world' }
-function a() {
+function myFunction() {
     return this.hello
 }
-const b = a.bind(context)
-equal(b(), context.hello, 'context was correct')
-equal(b.unbounded, a, 'unbounded was correct')
+
+import { equal } from 'assert'
+const boundedFunction = binder.call(myFunction, context)
+equal(boundedFunction(), context.hello, 'context was correct')
+equal(boundedFunction.unbounded, myFunction, 'unbounded was correct')
 ```
 
 <!-- INSTALL/ -->
@@ -76,11 +90,33 @@ equal(b.unbounded, a, 'unbounded was correct')
 <li>Require: <code>const pkg = require('unbounded')</code></li>
 </ul>
 
+<a href="https://deno.land" title="Deno is a secure runtime for JavaScript and TypeScript, it is an alternative for Node.js"><h3>Deno</h3></a>
+
+``` typescript
+import * as pkg from 'https://unpkg.com/unbounded@^6.0.0/edition-deno/index.ts'
+```
+
+<a href="https://www.skypack.dev" title="Skypack is a JavaScript Delivery Network for modern web apps"><h3>Skypack</h3></a>
+
+``` html
+<script type="module">
+    import * as pkg from '//cdn.skypack.dev/unbounded@^6.0.0'
+</script>
+```
+
+<a href="https://unpkg.com" title="unpkg is a fast, global content delivery network for everything on npm"><h3>unpkg</h3></a>
+
+``` html
+<script type="module">
+    import * as pkg from '//unpkg.com/unbounded@^6.0.0'
+</script>
+```
+
 <a href="https://jspm.io" title="Native ES Modules CDN"><h3>jspm</h3></a>
 
 ``` html
 <script type="module">
-    import * as pkg from '//dev.jspm.io/unbounded@5.4.0'
+    import * as pkg from '//dev.jspm.io/unbounded@6.0.0'
 </script>
 ```
 
@@ -89,9 +125,13 @@ equal(b.unbounded, a, 'unbounded was correct')
 <p>This package is published with the following editions:</p>
 
 <ul><li><code>unbounded</code> aliases <code>unbounded/index.cjs</code> which uses the <a href="https://github.com/bevry/editions" title="You can use the Editions Autoloader to autoload the appropriate edition for your consumers environment">Editions Autoloader</a> to automatically select the correct edition for the consumer's environment</li>
-<li><code>unbounded/source/index.js</code> is <a href="https://en.wikipedia.org/wiki/ECMAScript#ES.Next" title="ECMAScript Next">ESNext</a> source code for <a href="https://nodejs.org" title="Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine">Node.js</a> 6 || 8 || 10 || 12 || 14 || 16 || 18 || 20 || 21 with <a href="https://nodejs.org/dist/latest-v5.x/docs/api/modules.html" title="Node/CJS Modules">Require</a> for modules</li>
-<li><code>unbounded/edition-browsers/index.js</code> is <a href="https://en.wikipedia.org/wiki/ECMAScript#ES.Next" title="ECMAScript Next">ESNext</a> compiled for web browsers with <a href="https://nodejs.org/dist/latest-v5.x/docs/api/modules.html" title="Node/CJS Modules">Require</a> for modules</li>
-<li><code>unbounded/edition-node-4/index.js</code> is <a href="https://en.wikipedia.org/wiki/ECMAScript#ES.Next" title="ECMAScript Next">ESNext</a> compiled for <a href="https://nodejs.org" title="Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine">Node.js</a> 4 with <a href="https://nodejs.org/dist/latest-v5.x/docs/api/modules.html" title="Node/CJS Modules">Require</a> for modules</li></ul>
+<li><code>unbounded/source/index.ts</code> is <a href="https://www.typescriptlang.org/" title="TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. ">TypeScript</a> source code with <a href="https://babeljs.io/docs/learn-es2015/#modules" title="ECMAScript Modules">Import</a> for modules</li>
+<li><code>unbounded/edition-browsers/index.js</code> is <a href="https://www.typescriptlang.org/" title="TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. ">TypeScript</a> compiled against ES2022 for web browsers with <a href="https://babeljs.io/docs/learn-es2015/#modules" title="ECMAScript Modules">Import</a> for modules</li>
+<li><code>unbounded/edition-es2022/index.js</code> is <a href="https://www.typescriptlang.org/" title="TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. ">TypeScript</a> compiled against ES2022 for <a href="https://nodejs.org" title="Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine">Node.js</a> 6 || 8 || 10 || 12 || 14 || 16 || 18 || 20 || 21 with <a href="https://nodejs.org/dist/latest-v5.x/docs/api/modules.html" title="Node/CJS Modules">Require</a> for modules</li>
+<li><code>unbounded/edition-es5/index.js</code> is <a href="https://www.typescriptlang.org/" title="TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. ">TypeScript</a> compiled against ES5 for <a href="https://nodejs.org" title="Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine">Node.js</a> 4 || 6 || 8 || 10 || 12 || 14 || 16 || 18 || 20 || 21 with <a href="https://nodejs.org/dist/latest-v5.x/docs/api/modules.html" title="Node/CJS Modules">Require</a> for modules</li>
+<li><code>unbounded/edition-es2022-esm/index.js</code> is <a href="https://www.typescriptlang.org/" title="TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. ">TypeScript</a> compiled against ES2022 for <a href="https://nodejs.org" title="Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine">Node.js</a> 12 || 14 || 16 || 18 || 20 || 21 with <a href="https://babeljs.io/docs/learn-es2015/#modules" title="ECMAScript Modules">Import</a> for modules</li>
+<li><code>unbounded/edition-types/index.d.ts</code> is <a href="https://www.typescriptlang.org/" title="TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. ">TypeScript</a> compiled Types with <a href="https://babeljs.io/docs/learn-es2015/#modules" title="ECMAScript Modules">Import</a> for modules</li>
+<li><code>unbounded/edition-deno/index.ts</code> is <a href="https://www.typescriptlang.org/" title="TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. ">TypeScript</a> source code made to be compatible with <a href="https://deno.land" title="Deno is a secure runtime for JavaScript and TypeScript, it is an alternative to Node.js">Deno</a></li></ul>
 
 <!-- /INSTALL -->
 

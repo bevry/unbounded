@@ -1,5 +1,12 @@
 # History
 
+## v6.0.0 2023 November 26
+
+-   Rewrote in TypeScript
+-   `define` and `patch` now return `void`
+-   `define` is no longer exported
+-   Updated dependencies, [base files](https://github.com/bevry/base), and [editions](https://editions.bevry.me) using [boundation](https://github.com/bevry/boundation)
+
 ## v5.4.0 2023 November 25
 
 -   Updated dependencies, [base files](https://github.com/bevry/base), and [editions](https://editions.bevry.me) using [boundation](https://github.com/bevry/boundation)
