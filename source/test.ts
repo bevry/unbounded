@@ -1,4 +1,4 @@
-import * as unbounded from './index.js'
+import { binder, define, patch } from './index.js'
 import { equal } from 'assert-helpers'
 import kava from 'kava'
 
@@ -7,6 +7,14 @@ interface Context {
 }
 
 kava.suite('unbounded', function (suite, test) {
+	test('define works', function () {
+		const a = function () {}
+		const b = function () {}
+		const c = function () {}
+		define(b, c)
+		define(a, b)
+		equal(a.unbounded, c, 'unbounded was correct')
+	})
 	test('binder works', function () {
 		const context: Context = {
 			str: 'a',
@@ -16,14 +24,14 @@ kava.suite('unbounded', function (suite, test) {
 			return this.str
 		}
 
-		const b = unbounded.binder.call(a, context)
+		const b = binder.call(a, context)
 		equal(b.unbounded, a, 'unbounded was correct')
 		equal(b(), context.str, 'context was correct')
 		equal(context.str, 'a', 'context was correct')
 		equal(b('b'), context.str, 'context was correct')
 		equal(context.str, 'b', 'context was correct')
 
-		const c = unbounded.binder.call(a, context, 'c')
+		const c = binder.call(a, context, 'c')
 		equal(c.unbounded, a, 'unbounded was correct')
 		equal(c(), context.str, 'context was correct')
 		equal(context.str, 'c', 'context was correct')
@@ -31,7 +39,7 @@ kava.suite('unbounded', function (suite, test) {
 		equal(b.unbounded, a, 'unbounded was correct')
 	})
 	test('patch works', function () {
-		unbounded.patch()
+		patch()
 		const context: Context = {
 			str: 'a',
 		}

@@ -1,6 +1,6 @@
 {
   "name": "unbounded",
-  "version": "6.3.0",
+  "version": "6.3.1",
   "license": "Artistic-2.0",
   "description": "Function.prototype.bind replacement that provides an `unbounded` hidden property on the returned bounded function, that contains the original unbounded function",
   "homepage": "https://github.com/bevry/unbounded",
@@ -246,7 +246,7 @@
     "eslint-config-bevry": "^5.3.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.2",
-    "kava": "^7.6.0",
+    "kava": "^7.7.0",
     "make-deno-edition": "^2.2.0",
     "prettier": "^3.1.1",
     "projectz": "^4.1.1",

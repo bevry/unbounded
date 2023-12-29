@@ -90,27 +90,27 @@ equal(boundedFunction.unbounded, myFunction, 'unbounded was correct')
 ### [Deno](https://deno.land "Deno is a secure runtime for JavaScript and TypeScript, it is an alternative for Node.js")
 
 ``` typescript
-import * as pkg from 'https://unpkg.com/unbounded@^6.3.0/edition-deno/index.ts'
+import * as pkg from 'https://unpkg.com/unbounded@^6.3.1/edition-deno/index.ts'
 ```
 ### [Skypack](https://www.skypack.dev "Skypack is a JavaScript Delivery Network for modern web apps")
 
 ``` html
 <script type="module">
-    import * as pkg from '//cdn.skypack.dev/unbounded@^6.3.0'
+    import * as pkg from '//cdn.skypack.dev/unbounded@^6.3.1'
 </script>
 ```
 ### [unpkg](https://unpkg.com "unpkg is a fast, global content delivery network for everything on npm")
 
 ``` html
 <script type="module">
-    import * as pkg from '//unpkg.com/unbounded@^6.3.0'
+    import * as pkg from '//unpkg.com/unbounded@^6.3.1'
 </script>
 ```
 ### [jspm](https://jspm.io "Native ES Modules CDN")
 
 ``` html
 <script type="module">
-    import * as pkg from '//dev.jspm.io/unbounded@6.3.0'
+    import * as pkg from '//dev.jspm.io/unbounded@6.3.1'
 </script>
 ```
 ### [Editions](https://editions.bevry.me "Editions are the best way to produce and consume packages you care about.")
