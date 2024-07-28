@@ -238,7 +238,7 @@
     "editions": "^6.21.0"
   },
   "devDependencies": {
-    "@types/node": "^20.10.5",
+    "@types/node": "^22.0.0",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.1",
     "assert-helpers": "^11.12.0",
